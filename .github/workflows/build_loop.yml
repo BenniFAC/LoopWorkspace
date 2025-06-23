@@ -33,12 +33,12 @@ jobs:
 
   # Step 2: Optionally nuke certificates if enabled via secrets
   nuke_certs:
-  name: Nuke Distribution Certificates (conditionally)
-  needs: check_certs
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    name: Nuke Distribution Certificates (conditionally)
+    needs: check_certs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
