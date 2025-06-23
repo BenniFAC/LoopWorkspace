@@ -5,7 +5,7 @@ on:
 
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   push:
-  branches: [ main ]
+    branches: [ main ]
 
   # Automated builds now include automatic certificate update - the nuke certs part of that process could
   #   affect other OS apps if run simultaneously.
