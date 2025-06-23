@@ -36,7 +36,7 @@ jobs:
     name: Nuke Distribution Certificates (if enabled)
     needs: check_certs
     runs-on: ubuntu-latest
-    if: env.ENABLE_NUKE_CERTS == 'true'
+    if: secrets.ENABLE_NUKE_CERTS == 'true'
     steps:
       - name: Install Ruby dependencies
         run: bundle install
