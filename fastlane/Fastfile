@@ -194,7 +194,9 @@ platform :ios do
         }
       )
     else
-      bundle_id.create_capability({ capability_type: capability })
+      bundle_id.create_capability({ capability_type: capability 
+    settings: []
+      })
     end
   end
 end
