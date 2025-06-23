@@ -174,7 +174,7 @@ platform :ios do
   platform = Spaceship::ConnectAPI::Platform::IOS
   bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier, platform: platform)
   capabilities.each { |capability|
-    bundle_id.create_capability(capability)
+    bundle_id.create_capability({ capability_type: capability })
   }
 end
 
