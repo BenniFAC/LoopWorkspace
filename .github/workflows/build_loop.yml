@@ -31,7 +31,7 @@ jobs:
     uses: ./.github/workflows/create_certs.yml
     secrets: inherit
 
-  # Step 2: Optionally nuke certificates if enabled via secret
+  # Step 2: Optionally nuke certificates if enabled via secrets
   nuke_certs:
   name: Nuke Distribution Certificates (conditionally)
   needs: check_certs
