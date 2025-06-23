@@ -32,7 +32,7 @@ jobs:
     secrets: inherit
 
   # Step 2: Optionally nuke certificates if enabled via secret
-  nuke_certs:
+ nuke_certs:
   name: Nuke Distribution Certificates (conditionally)
   needs: check_certs
   runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
       run: |
         echo "Nuking and recreating distribution certificates..."
         bundle exec fastlane match nuke distribution --readonly false
-
+        
   # Checks if GH_PAT holds workflow permissions
   # Checks for existence of alive branch; if non-existent creates it
   
