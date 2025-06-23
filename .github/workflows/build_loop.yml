@@ -40,13 +40,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Ruby
+    - name: Set up Ruby and Bundler
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.1'
-
-    - name: Install dependencies
-      run: bundle install
+        bundler-cache: true
 
     - name: Nuke certificates with Fastlane (only if enabled)
       if: env.ENABLE_NUKE_CERTS == 'true'
