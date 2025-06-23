@@ -33,18 +33,17 @@ jobs:
 
   # Step 2: Optionally nuke certificates if enabled via secret
  nuke_certs:
-   name: Nuke Distribution Certificates (conditionally)
-   needs: check_certs
-   runs-on: ubuntu-latest
-   steps:
+  name: Nuke Distribution Certificates (conditionally)
+  needs: check_certs
+  runs-on: ubuntu-latest
+  steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'  # oder deine gewünschte Version
-        bundler-cache: true  # optional: beschleunigt builds
+        ruby-version: '3.1'
 
     - name: Install dependencies
       run: bundle install
