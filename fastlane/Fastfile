@@ -173,9 +173,23 @@ platform :ios do
     def configure_bundle_id(name, identifier, capabilities)
   platform = Spaceship::ConnectAPI::Platform::IOS
   bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier, platform: platform)
-  capabilities.each { |capability|
-    bundle_id.create_capability({ capability_type: capability })
-  }
+  capabilities.each do |capability|
+    # Add logic for capabilities that need options/settings
+    if capability == Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
+      app_group_identifiers = ["group.com.#{TEAMID}.loopkit"] # <-- Set your real App Group ID(s)
+      bundle_id.create_capability(
+        {
+          capability_type: capability,
+          settings: [{
+            key: "GROUP_IDENTIFIERS",
+            options: app_group_identifiers
+          }]
+        }
+      )
+    else
+      bundle_id.create_capability({ capability_type: capability })
+    end
+  end
 end
 
     configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
