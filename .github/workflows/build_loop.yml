@@ -32,7 +32,7 @@ jobs:
     secrets: inherit
 
   # Step 2: Optionally nuke certificates if enabled via secret
- nuke_certs:
+  nuke_certs:
   name: Nuke Distribution Certificates (conditionally)
   needs: check_certs
   runs-on: ubuntu-latest
