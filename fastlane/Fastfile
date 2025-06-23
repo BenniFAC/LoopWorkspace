@@ -189,9 +189,7 @@ platform :ios do
     else
       bundle_id.create_capability({ capability_type: capability })
     end
-  end
-end
-
+  
     configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
       Spaceship::ConnectAPI::BundleIdCapability::Type::HEALTHKIT,
