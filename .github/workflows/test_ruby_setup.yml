@@ -1,1 +1,23 @@
 
+name: Test Ruby Setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test_ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Check Ruby version
+        run: ruby -v
+
+      - name: Check Bundler version
+        run: bundle -v
