@@ -171,12 +171,12 @@ platform :ios do
     )
 
     def configure_bundle_id(name, identifier, capabilities)
-      platform = Spaceship::ConnectAPI::Platform::IOS
-      bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier: identifier, platform: platform) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier, platform: platform)
-      capabilities.each { |capability|
-        bundle_id.create_capability(capability)
-      }
-    end
+  platform = Spaceship::ConnectAPI::Platform::IOS
+  bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier, platform: platform)
+  capabilities.each { |capability|
+    bundle_id.create_capability(capability)
+  }
+end
 
     configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
