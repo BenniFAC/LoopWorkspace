@@ -23,7 +23,7 @@ env:
   ALIVE_BRANCH_DEV: alive-dev
   ENABLE_NUKE_CERTS: ${{ secrets.ENABLE_NUKE_CERTS }}
   FASTLANE_USER: ${{ secrets.APPLE_ID }}
-  FASTLANEPASSWORD: ${{ secrets.FASTLANEPASSWORD }}
+  FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
   
 jobs:
   # Checks if Distribution certificate is present and valid, optionally nukes and
