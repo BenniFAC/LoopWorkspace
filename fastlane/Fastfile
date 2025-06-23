@@ -174,9 +174,9 @@ platform :ios do
   platform = Spaceship::ConnectAPI::Platform::IOS
   bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier, platform: platform)
   capabilities.each do |capability|
-    # Add logic for capabilities that need options/settings
-    if capability == Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
-      app_group_identifiers = ["group.com.#{TEAMID}.loopkit"] # <-- Set your real App Group ID(s)
+    case capability
+    when Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
+      app_group_identifiers = ["group.com.#{TEAMID}.loopkit"] # Ensure this exists in your Apple Developer portal
       bundle_id.create_capability(
         {
           capability_type: capability,
@@ -186,9 +186,18 @@ platform :ios do
           }]
         }
       )
+    when Spaceship::ConnectAPI::BundleIdCapability::Type::PUSH_NOTIFICATIONS
+      bundle_id.create_capability(
+        {
+          capability_type: capability,
+          enabled: true # Explicitly set enabled if required
+        }
+      )
     else
       bundle_id.create_capability({ capability_type: capability })
     end
+  end
+end
   
     configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
