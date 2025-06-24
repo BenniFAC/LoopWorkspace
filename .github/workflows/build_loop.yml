@@ -38,6 +38,9 @@ jobs:
     name: Nuke Distribution Certificates (conditionally)
     needs: check_certs
     runs-on: ubuntu-latest
+    env:
+      FASTLANE_USER: ${{ secrets.FASTLANE_USER }}        # deine Apple-ID
+      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}# app-spezifisches Passwort
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -51,7 +54,7 @@ jobs:
       - name: Nuke certificates with Fastlane (only if enabled)
         if: env.ENABLE_NUKE_CERTS == 'true'
         run: |
-          echo "Nuking distribution certificates..."
+          echo "Nuking distribution certificates via match..."
           bundle exec fastlane match nuke distribution --readonly false
         
         
