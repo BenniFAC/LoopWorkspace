@@ -22,7 +22,7 @@ env:
   ALIVE_BRANCH_MAIN: alive-main
   ALIVE_BRANCH_DEV: alive-dev
   ENABLE_NUKE_CERTS: ${{ secrets.ENABLE_NUKE_CERTS }}
-  FASTLANE_USER: ${{ secrets.APPLE_ID }}
+  FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
   FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
   
 jobs:
