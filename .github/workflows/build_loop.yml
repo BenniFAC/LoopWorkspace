@@ -23,7 +23,7 @@ env:
   ALIVE_BRANCH_DEV: alive-dev
   ENABLE_NUKE_CERTS: ${{ secrets.ENABLE_NUKE_CERTS }}
   FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
-  FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+  FASTLANE_PASSWORD: ${{ secrets.FASTLANEPASSWORD }}
   
 jobs:
   # Checks if Distribution certificate is present and valid, optionally nukes and
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FASTLANE_USER: ${{ secrets.FASTLANE_USER }}         # deine Apple-ID (z. B. manfred@icloud.com)
-      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }} # app-spezifisches Passwort von appleid.apple.com
+      FASTLANE_PASSWORD: ${{ secrets.FASTLANEPASSWORD }} # app-spezifisches Passwort von appleid.apple.com
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}       # optional: Passwort für verschlüsseltes match-Repo
     steps:
       - name: Checkout repository
