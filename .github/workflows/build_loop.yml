@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FASTLANE_USER: ${{ secrets.FASTLANE_USER }}         # deine Apple-ID (z. B. manfred@icloud.com)
-      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }} # app-spezifisches Passwort von appleid.apple.com
+      FASTLANE_PASSWORD: ${{ secrets.FASTLANEPASSWORD }} # app-spezifisches Passwort von appleid.apple.com
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}       # optional: Passwort für verschlüsseltes match-Repo
     steps:
       - name: Checkout repository
