@@ -34,28 +34,29 @@ jobs:
     secrets: inherit
 
  # Step 2: Optionally nuke certificates if enabled via secrets
-  nuke_certs:
+ nuke_certs:
     name: Nuke Distribution Certificates (conditionally)
     needs: check_certs
     runs-on: ubuntu-latest
     env:
-      FASTLANE_USER: ${{ secrets.FASTLANE_USER }}        # deine Apple-ID
-      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}# app-spezifisches Passwort
+      FASTLANE_USER: ${{ secrets.FASTLANE_USER }}         # deine Apple-ID (z. B. manfred@icloud.com)
+      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }} # app-spezifisches Passwort von appleid.apple.com
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}       # optional: Passwort für verschlüsseltes match-Repo
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
+      - name: Set up Ruby and Bundler
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true
 
-      - name: Nuke certificates with Fastlane (only if enabled)
+      - name: Nuke distribution certificates via Fastlane
         if: env.ENABLE_NUKE_CERTS == 'true'
         run: |
-          echo "Nuking distribution certificates via match..."
-          bundle exec fastlane match nuke distribution --readonly false
+          echo "Nuking distribution certificates..."
+          bundle exec fastlane match nuke distribution --readonly false 
         
         
   # Checks if GH_PAT holds workflow permissions
