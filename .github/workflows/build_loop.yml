@@ -11,7 +11,8 @@ env:
   UPSTREAM_REPO: LoopKit/LoopWorkspace
   UPSTREAM_BRANCH: ${{ github.ref_name }}
   TARGET_BRANCH: ${{ github.ref_name }}
-
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: tru
+  
 jobs:
   check_status:
     runs-on: ubuntu-latest
